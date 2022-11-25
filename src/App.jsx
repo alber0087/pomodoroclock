@@ -5,6 +5,36 @@ import './style.css'
 
 function App() {
 
+	const [breakLength, setBreakLength] = useState(300)
+	const [sessionLength, setSessionLength] = useState(60 * 25)
+	
+	const decreaseBreakLength = () => {
+		const newBreakLength = breakLength - 60
+		if (newBreakLength < 0) {
+			setBreakLength(0)
+		} else {
+			setBreakLength(newBreakLength)
+		}
+	}
+
+	const increaseBreakLength = () => {
+		setBreakLength(breakLength + 60)
+	}
+
+	const decreaseSessionLength = () => {
+		const newSessionLength = sessionLength - 60
+		if (newSessionLength < 0) {
+			setSessionLength(0)
+		} else {
+			setSessionLength(newSessionLength)
+		}
+	}
+
+	const increaseSessionLength = () => {
+		setSessionLength(sessionLength + 60)
+	}
+
+
 	const [timeLeft, setTimeLeft] = useState(1500)
 	const [timingType, setTimingType] = useState("SESSION")
 
@@ -34,15 +64,12 @@ function App() {
 	}
 
 	const resetTimer = () => {
-
 		const audio = document.getElementById("beep")
-
 		if (!timeLeft && timingType === "SESSION") {
 			setTimeLeft(breakLength * 60)
 			setTimingType("BREAK")
 			audio.play()
 		}
-
 		if (!timeLeft && timingType === "BREAK") {
 			setTimeLeft(sessionLength * 60)
 			setTimingType("SESSION")
@@ -81,8 +108,16 @@ function App() {
 				<h2>Pomodoro Clock</h2>
 
 				<div className="break-session-length">
-					<Break />
-					<Session />
+					<Break 
+						breakLength={breakLength}
+						decreaseBreakLength={decreaseBreakLength}
+						increaseBreakLength={increaseBreakLength}
+					/>
+					<Session 
+						sessionLength={sessionLength}
+						decreaseSessionLength={decreaseSessionLength}
+						increaseSessionLength={increaseSessionLength}
+					/>
 				</div>
 
 				<div className="timer-wrapper">
