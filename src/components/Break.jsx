@@ -21,10 +21,12 @@ const Break = () => {
 
 	return (
 		<div>
-			<div id="break-label">Break</div>
-			<div id="break-length">{breakLengthInMinutes}</div>
-			<button id="break-decrement" onClick={decreaseBreakLength}>-</button>
-			<button id="break-increment" onClick={increaseBreakLength}>+</button>
+			<h3 id="break-label">Break</h3>
+			<div className="controls">
+				<button id="break-decrement" onClick={decreaseBreakLength}>-</button>
+				<div id="break-length">{breakLengthInMinutes}</div>
+				<button id="break-increment" onClick={increaseBreakLength}>+</button>
+			</div>
 		</div>
 	)
 }

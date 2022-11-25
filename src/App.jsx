@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react'
+import Break from './components/Break'
+import Session from './components/Session'
 import './style.css'
 
 function App() {
-	const [breakLength, setBreakLength] = useState(5)
-	const [sessionLength, setSessionLength] = useState(25)
+
 	const [timeLeft, setTimeLeft] = useState(1500)
 	const [timingType, setTimingType] = useState("SESSION")
 
@@ -14,32 +15,6 @@ function App() {
 			setTimeLeft(timeLeft - 1)
 		}
 	}, 1000)
-
-	const handleBreakIncrease = () => {
-		if (breakLength < 60) {
-			setBreakLength(breakLength + 1)
-		}
-	}
-
-	const handleBreakDecrease = () => {
-		if (breakLength > 1) {
-			setBreakLength(breakLength - 1)
-		}
-	}
-	
-	const handleSessionIncrease = () => {
-		if (sessionLength < 60) {
-			setSessionLength(sessionLength + 1)
-			setTimeLeft(timeLeft + 60)
-		}
-	}
-
-	const handleSessionDecrease = () => {
-		if (sessionLength > 1) {
-			setSessionLength(sessionLength - 1)
-			setTimeLeft(timeLeft - 60)
-		}
-	}
 
 	const handleReset = () => {
 		clearTimeout(timeout)
@@ -106,22 +81,8 @@ function App() {
 				<h2>Pomodoro Clock</h2>
 
 				<div className="break-session-length">
-					<div>
-						<h3 id="break-label">Break Length</h3>
-						<div className="controls">
-							<button disabled={play} onClick={handleBreakIncrease} id="break-increment">Increase</button>
-								<strong id="break-length">{breakLength}</strong>
-							<button disabled={play} onClick={handleBreakDecrease} id="break-decrement">Decrease</button>
-						</div>
-					</div>
-					<div>
-						<h3 id="session-label">Session Length</h3>
-						<div className="controls">
-							<button disabled={play} onClick={handleSessionIncrease} id="session-increment">Increase</button>
-								<strong id="session-length">{sessionLength}</strong>
-							<button disabled={play} onClick={handleSessionDecrease} id="session-decrement">Decrease</button>
-						</div>
-					</div>
+					<Break />
+					<Session />
 				</div>
 
 				<div className="timer-wrapper">

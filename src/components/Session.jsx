@@ -21,10 +21,12 @@ const Session = () => {
 
 	return (
 		<div>
-			<div id="session-label">Session</div>
-			<div id="session-length">{sessionLengthInMinutes}</div>
-			<button id="session-decrement" onClick={decreaseSessionLength}>-</button>
-			<button id="session-increment" onClick={increaseSessionLength}>+</button>
+			<h3 id="session-label">Session</h3>
+            <div className="controls">
+                <button id="session-decrement" onClick={decreaseSessionLength}>-</button>
+                <div id="session-length">{sessionLengthInMinutes}</div>
+                <button id="session-increment" onClick={increaseSessionLength}>+</button>
+            </div>
 		</div>
 	)
 }
