@@ -3,7 +3,7 @@ import moment from 'moment'
 
 const Break = ({breakLength, decreaseBreakLength, increaseBreakLength}) => {
 
-	const breakLengthInMinutes = moment.duration(breakLength, 's').minutes()
+	const breakLengthInMinutes = moment.duration(breakLength, 's').asMinutes()
 
 	return (
 		<div>

@@ -25,7 +25,10 @@ function App() {
 	}
 
 	const increaseBreakLength = () => {
-		setBreakLength(breakLength + 60)
+		const newBreakLength = breakLength + 60
+		if (newBreakLength <= 60 * 60) {
+			setBreakLength(newBreakLength)
+		}
 	}
 
 	const decreaseSessionLength = () => {
@@ -36,7 +39,10 @@ function App() {
 	}
 
 	const increaseSessionLength = () => {
-		setSessionLength(sessionLength + 60)
+		const newSessionLength = sessionLength + 60
+		if (newSessionLength <= 60 * 60) {
+			setSessionLength(newSessionLength)
+		}
 	}
 
 	const isStarted = intervalId !== null
@@ -45,8 +51,8 @@ function App() {
 		// if we are in started mode:
 		// we want to stop the timer
 		//clearInterval	
-		clearInterval(intervalId)
-		setIntervalId(null)
+			clearInterval(intervalId)
+			setIntervalId(null)
 		} else {
 		// if we are in stopped mode:
 		// decrement timeLeft by one every second (1000ms)
@@ -55,7 +61,7 @@ function App() {
 				setTimeLeft(prevTimeLeft => {
 					const newTimeLeft = prevTimeLeft - 1
 					if (newTimeLeft >= 0) {
-						return prevTimeLeft - 1
+						return newTimeLeft
 					}
 					// time left is less than 0
 					audioElement.current.play()
@@ -64,17 +70,17 @@ function App() {
 					// switch to break
 						setCurrentSessionType('Break')
 					// setTimeLeft to breakSessionLength
-						setTimeLeft(breakLength)
+						return breakLength
 					}
 					// if break:
 					else if (currentSessionType === 'Break') {
 					// switch to session
 						setCurrentSessionType('Session')
 					// setTimeLeft to sessionLength
-						setTimeLeft(sessionLength)
+						return sessionLength
 					}
 				})
-			}, 1000)
+			}, 100)
 			setIntervalId(newIntervalId)
 		}
 	}
@@ -87,7 +93,7 @@ function App() {
 		// set the intervalId null
 		setIntervalId(null)
 		// set the sessionType to 'Session'
-		setSessionType('Session')
+		setCurrentSessionType('Session')
 		// reset the session length to 25 min
 		setSessionLength(25 * 60)
 		// reset the break length to 5 min

@@ -16,7 +16,7 @@ const TimeLeft = ({
 		<>
 			<h2 id="timer-label">{timerLabel}</h2>
 			<h3 id="time-left">{formattedTimeLeft}</h3>
-			<button onClick={handleStartStopClick}>
+			<button onClick={handleStartStopClick} id="start_stop">
 				{startStopButton}
 			</button>
 		</>
