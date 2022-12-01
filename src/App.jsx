@@ -106,7 +106,7 @@ function App() {
 		<div>
 			<div className="wrapper">
 			
-				<h2>Pomodoro Clock</h2>
+				<h1>Pomodoro Clock</h1>
 
 				<div className="break-session-length">
 					<Session 
