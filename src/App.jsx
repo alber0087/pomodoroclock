@@ -130,7 +130,7 @@ function App() {
 							timeLeft={timeLeft}
 						/>
 					</div>
-					<button id="reset" onClick={handleReset}>Reset</button>
+					<button id="reset" className="reset" onClick={handleReset}>Reset</button>
 				</div>
 
 			</div>
