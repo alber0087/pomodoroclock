@@ -14,7 +14,7 @@ const TimeLeft = ({
 	const formattedTimeLeft = moment.duration(timeLeft, 's').format('mm:ss', { trim: false })
 	return (
 		<>
-			<h2 id="timer-label">{timerLabel}</h2>
+			<h2 id="timer-label" className="timer-label">{timerLabel}</h2>
 			<h3 id="time-left">{formattedTimeLeft}</h3>
 			<button onClick={handleStartStopClick} id="start_stop">
 				{startStopButton}
