@@ -109,15 +109,15 @@ function App() {
 				<h2>Pomodoro Clock</h2>
 
 				<div className="break-session-length">
-					<Break 
-						breakLength={breakLength}
-						decreaseBreakLength={decreaseBreakLength}
-						increaseBreakLength={increaseBreakLength}
-					/>
 					<Session 
 						sessionLength={sessionLength}
 						decreaseSessionLength={decreaseSessionLength}
 						increaseSessionLength={increaseSessionLength}
+					/>
+					<Break 
+						breakLength={breakLength}
+						decreaseBreakLength={decreaseBreakLength}
+						increaseBreakLength={increaseBreakLength}
 					/>
 				</div>
 
